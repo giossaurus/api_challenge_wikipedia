@@ -46,7 +46,7 @@ const showError = error => {
     errorSpan.innerHTML = `🚨 ${error}🚨`;
 }
 
-const showResults = () => {
+const showResults = (results) => {
     results.forEach(result => {
         resultsContainer.innerHTML += `
             <div class="resultsItem">
@@ -59,6 +59,16 @@ const showResults = () => {
     });
 }
 
+const gatherData = pages => {
+    const results = Object.values(pages).map(page => ({
+        pageId: page.pageid,
+        title: page.title,
+        intro: page.extract,
+    }));
+
+    showResults(results);
+};
+
 const getData = async () => {
     const userInput = input.value;
     if (isInputEmpty (userInput)) return;
@@ -70,7 +80,7 @@ const getData = async () => {
        const { data } = await axios.get(endpoint, { params }); 
 
        if (data.error) throw new Error(data.error.info);
-
+       gatherData(data.query.pages);
      } catch (error) {
         showError(error);
      } finally {
