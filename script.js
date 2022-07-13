@@ -12,3 +12,8 @@ const enabled = () => {
     input.disabled = false
     submitButton.disabled = false
 }
+
+// const changeUiState = (isDisabled) => {
+//     input.disabled = isDisabled
+//     submitButton.disabled = isDisabled
+// }
