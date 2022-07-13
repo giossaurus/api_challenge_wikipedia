@@ -47,16 +47,19 @@ const showError = (error) => {
 }
 
 const getData = ( ) => {
-    
+    const userInput = input.value;
+    if (isInputEmpty (userInput)) return;
 }
 
 const handleKeyEvent = (e) => {
     if(e.key === 'Enter') {
-        getData()
+        getData();
     }
 }
 
-const registerEventHandlers = ( => {
-    input.addEventListener('keydown', handleKeyEvent )
-    submitButton.addEventListener('click', getData )
-})
+const registerEventHandlers = () => {
+    input.addEventListener('keydown', handleKeyEvent);
+    submitButton.addEventListener('click', getData );
+};
+
+registerEventHandlers();
