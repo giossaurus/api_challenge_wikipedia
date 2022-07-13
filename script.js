@@ -46,10 +46,24 @@ const showError = (error) => {
     errorSpan.innerHTML = '🚨 ${error}🚨';
 }
 
-const getData = ( ) => {
+const getData = async () => {
     const userInput = input.value;
     if (isInputEmpty (userInput)) return;
-}
+
+    params.gsrsearch = userInput;
+    disabled();
+
+    try {
+       const { data } = await axios.get(endpoint, { params }); 
+
+       if (data.error) throw new Error(data.error.info);
+
+     } catch (error) {
+        showError(error);
+     } finally {
+        enableUi();
+     }
+};
 
 const handleKeyEvent = (e) => {
     if(e.key === 'Enter') {
