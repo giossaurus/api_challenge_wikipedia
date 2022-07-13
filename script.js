@@ -42,8 +42,21 @@ const isInputEmpty = (input) => {
     return false;
 }
 
-const showError = (error) => {
-    errorSpan.innerHTML = '🚨 ${error}🚨';
+const showError = error => {
+    errorSpan.innerHTML = `🚨 ${error}🚨`;
+}
+
+const showResults = () => {
+    results.forEach(result => {
+        resultsContainer.innerHTML += `
+            <div class="resultsItem">
+                <a href="https://en.wikipedia.org/?curid=${result.pageId}" target="_blank" class="card animated bounceInUp">
+                    <h2 class="resultsItemTitle">${result.title}</h2>
+                    <p class="resultsItemIntro">${result.intro}</p>
+                </a>
+            </div>
+        `;
+    });
 }
 
 const getData = async () => {
