@@ -14,7 +14,7 @@ const params = {
     explaintext: true,
     generator: 'search',
     gsrlimit: 20,
-    
+
 }
 
 const disabled = () => {
@@ -45,3 +45,18 @@ const isInputEmpty = (input) => {
 const showError = (error) => {
     errorSpan.innerHTML = '🚨 ${error}🚨';
 }
+
+const getData = ( ) => {
+    
+}
+
+const handleKeyEvent = (e) => {
+    if(e.key === 'Enter') {
+        getData()
+    }
+}
+
+const registerEventHandlers = ( => {
+    input.addEventListener('keydown', handleKeyEvent )
+    submitButton.addEventListener('click', getData )
+})
