@@ -70,7 +70,7 @@ const getData = async () => {
 
     params.gsrsearch = userInput;
     clearPreviousResults();
-    disabled();
+    disableUi();
 
     try {
        const { data } = await axios.get(endpoint, { params }); 
